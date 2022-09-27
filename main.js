@@ -109,15 +109,33 @@ class LinkedList {
     }
 
     // clear list
+    clearList() {
+        this.head = null;
+        this.size = 0;
+    }
 
     // print list data
     printListData() {
         let current = this.head;
 
+        let array = [];
+        let printString = "";
+
+        function stringFormat(string) {
+            return ` ( ${string} ) -->`;
+        }
+
         while (current) {
-            console.log(current.data);
+            array.push(current.data);
             current = current.next;
         }
+
+        for (let i of array) {
+            printString = `${printString}${stringFormat(i)}`;
+        }
+
+        printString = `${printString} null`;
+        console.log(printString);
     }
 }
 
@@ -141,5 +159,11 @@ console.log("");
 
 linkedList.removeAtIndex(2);
 linkedList.removeAtIndex(0);
+
+linkedList.printListData();
+
+linkedList.clearList();
+
+console.log("");
 
 linkedList.printListData();
