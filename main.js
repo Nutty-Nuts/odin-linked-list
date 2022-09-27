@@ -70,6 +70,20 @@ class LinkedList {
     }
 
     // get at index
+    getAtIndex(index) {
+        let current = this.head;
+        let count = 0;
+
+        while (current) {
+            if (count == index) {
+                console.log(current.data);
+            }
+            count++;
+            current = current.next;
+        }
+
+        return null;
+    }
 
     // remove at index
 
@@ -97,3 +111,7 @@ linkedList.insertLast(400);
 linkedList.insertAtIndex(500, 2);
 
 linkedList.printListData();
+
+console.log("");
+
+linkedList.getAtIndex(2);
