@@ -42,6 +42,30 @@ class LinkedListg {
             while (current.next) current = current.next;
             current.next = node;
         }
+
+        this.#incrementSize();
+    }
+
+    insertAt(data, index) {
+        if (this.#outOfBounds(index)) return;
+
+        if (index === 0) {
+            this.insertFirst(data);
+            return;
+        }
+
+        let node = new Node(data);
+        let current = this.head;
+        let previous;
+
+        let consecutiveNodes = this.#moveToIndex(index, previous, current);
+        previous = consecutiveNodes[0];
+        current = consecutiveNodes[1];
+
+        node.next = current;
+        previous.next = node;
+
+        this.#incrementSize();
     }
 }
 
@@ -50,3 +74,5 @@ newLinkedList.insertLast(10);
 newLinkedList.insertLast(5);
 
 console.log(newLinkedList);
+
+newLinkedList.getAt(1);
