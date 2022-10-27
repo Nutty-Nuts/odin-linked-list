@@ -5,7 +5,7 @@ class Node {
     }
 }
 
-class LinkedListg {
+class LinkedList {
     constructor() {
         this.head = null;
         this.size = 0;
@@ -75,12 +75,44 @@ class LinkedListg {
 
         console.log(getNode[1]);
     }
+
+    removeAt(index) {
+        if (this.#outOfBounds(index)) return;
+
+        let current = this.head;
+        let previous;
+
+        if (index === 0) {
+            this.head = current.next;
+            return;
+        }
+
+        let consecutiveNodes = this.#moveToIndex(index, previous, current);
+        previous = consecutiveNodes[0];
+        current = consecutiveNodes[1];
+
+        previous.next = current.next;
+    }
+
+    clerList() {
+        this.head = null;
+        this.size = 0;
+    }
 }
 
-let newLinkedList = new LinkedListg();
+let newLinkedList = new LinkedList();
+
 newLinkedList.insertLast(10);
 newLinkedList.insertLast(5);
+newLinkedList.insertLast(0);
+
+newLinkedList.insertFirst(15);
+newLinkedList.insertFirst(30);
+newLinkedList.insertFirst(45);
 
 console.log(newLinkedList);
 
 newLinkedList.getAt(1);
+newLinkedList.removeAt(0);
+
+console.log(newLinkedList);
