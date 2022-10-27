@@ -11,14 +11,17 @@ class LinkedList {
         this.size = 0;
     }
 
+    // increments the size of the linked list
     #incrementSize() {
         this.size++;
     }
 
+    // checks if the index is within the size of the linked list
     #outOfBounds(index) {
         if (index > 0 && index > this.size) return true;
     }
 
+    // returns the node at the index and the node before
     #moveToIndex(index, previous, current) {
         for (let count = 0; count < index; count++) {
             previous = current;
@@ -28,20 +31,24 @@ class LinkedList {
         return [previous, current];
     }
 
+    // returns the size of the linked list
     getSize() {
         return this.size;
     }
 
+    // inserts a node at the start of the linked list
     insertFirst(data) {
         this.head = new Node(data, this.head);
         this.#incrementSize();
     }
 
+    // inserts a nodc at the end of the linked list
     insertLast(data) {
         let node = new Node(data);
         let current = this.head;
+        let previous;
 
-        if (this.head === null) this.head = node;
+        if (this.head === null) this.insertFirst(data);
         else {
             while (current.next) current = current.next;
             current.next = node;
@@ -50,6 +57,7 @@ class LinkedList {
         this.#incrementSize();
     }
 
+    // inserts a node at a specified index
     insertAt(data, index) {
         if (this.#outOfBounds(index)) return;
 
@@ -72,6 +80,7 @@ class LinkedList {
         this.#incrementSize();
     }
 
+    // returns the data of a node at a specified index
     getAt(index) {
         let current = this.head;
         let previous;
@@ -80,14 +89,17 @@ class LinkedList {
         return getNode[1];
     }
 
+    // returns the first node of the linked list
     getHead() {
         return this.getAt(0);
     }
 
+    // returns the last node of the linked list
     getTail() {
         return this.getAt(this.size - 2);
     }
 
+    // removes a node at the specified index
     removeAt(index) {
         if (this.#outOfBounds(index)) return;
 
@@ -106,14 +118,17 @@ class LinkedList {
         previous.next = current.next;
     }
 
+    // removes the first node of the linked list
     removeHead() {
         this.removeAt(0);
     }
 
+    // removes the last node of the linked list
     removeTail() {
         this.removeAt(this.size - 3);
     }
 
+    // returns the index of the value taken as a parameter
     find(value) {
         let current = this.head;
         let count = 0;
@@ -126,6 +141,7 @@ class LinkedList {
         return null;
     }
 
+    // checks if the value is inside the linked list
     contains(value) {
         let current = this.head;
 
@@ -139,11 +155,13 @@ class LinkedList {
         return false;
     }
 
+    // clears all nodes of the linked list
     clearList() {
         this.head = null;
         this.size = 0;
     }
 
+    // prints all node of the linked list
     printList() {
         let current = this.head;
         let nodeData = [];
