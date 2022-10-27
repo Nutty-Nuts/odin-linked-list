@@ -110,6 +110,31 @@ class LinkedList {
         this.removeAt(this.size - 3);
     }
 
+    find(value) {
+        let current = this.head;
+        let count = 0;
+
+        while (current.next !== null) {
+            if (current.data === value) return count;
+            current = current.next;
+            count++;
+        }
+        return null;
+    }
+
+    contains(value) {
+        let current = this.head;
+
+        let count = 0;
+
+        while (current.next !== null) {
+            if (current.data === value) return true;
+            current = current.next;
+            count++;
+        }
+        return false;
+    }
+
     clearList() {
         this.head = null;
         this.size = 0;
@@ -124,6 +149,8 @@ class LinkedList {
             nodeData.push(current.data);
             current = current.next;
         }
+
+        printString = `${nodeData.shift()}`;
 
         for (let i of nodeData) {
             printString = `${printString} — ${i}`;
@@ -159,3 +186,6 @@ newLinkedList.removeHead();
 newLinkedList.removeTail();
 
 newLinkedList.printList();
+
+console.log(newLinkedList.find(10));
+console.log(newLinkedList.contains(15));
