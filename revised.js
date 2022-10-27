@@ -28,6 +28,10 @@ class LinkedList {
         return [previous, current];
     }
 
+    getSize() {
+        return this.size;
+    }
+
     insertFirst(data) {
         this.head = new Node(data, this.head);
         this.#incrementSize();
@@ -73,15 +77,15 @@ class LinkedList {
         let previous;
         let getNode = this.#moveToIndex(index, previous, current);
 
-        console.log(getNode[1]);
+        return getNode[1];
     }
 
     getHead() {
-        this.getAt(0);
+        return this.getAt(0);
     }
 
     getTail() {
-        this.getAt(this.size - 2);
+        return this.getAt(this.size - 2);
     }
 
     removeAt(index) {
@@ -150,10 +154,10 @@ class LinkedList {
             current = current.next;
         }
 
-        printString = `${nodeData.shift()}`;
+        printString = `( ${nodeData.shift()} )`;
 
         for (let i of nodeData) {
-            printString = `${printString} — ${i}`;
+            printString = `${printString} -—> ( ${i} )`;
         }
 
         console.log(printString);
@@ -172,13 +176,13 @@ newLinkedList.insertFirst(45);
 
 console.log(newLinkedList);
 
-newLinkedList.getAt(1);
+console.log(newLinkedList.getAt(1));
 newLinkedList.removeAt(0);
 
 console.log(newLinkedList);
 
-newLinkedList.getHead();
-newLinkedList.getTail();
+console.log(newLinkedList.getHead());
+console.log(newLinkedList.getTail());
 
 newLinkedList.printList();
 
@@ -189,3 +193,5 @@ newLinkedList.printList();
 
 console.log(newLinkedList.find(10));
 console.log(newLinkedList.contains(15));
+
+console.log(newLinkedList.getSize());
