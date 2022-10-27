@@ -76,6 +76,14 @@ class LinkedList {
         console.log(getNode[1]);
     }
 
+    getHead() {
+        this.getAt(0);
+    }
+
+    getTail() {
+        this.getAt(this.size - 2);
+    }
+
     removeAt(index) {
         if (this.#outOfBounds(index)) return;
 
@@ -116,3 +124,6 @@ newLinkedList.getAt(1);
 newLinkedList.removeAt(0);
 
 console.log(newLinkedList);
+
+newLinkedList.getHead();
+newLinkedList.getTail();
