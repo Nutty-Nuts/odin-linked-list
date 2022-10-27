@@ -102,9 +102,34 @@ class LinkedList {
         previous.next = current.next;
     }
 
-    clerList() {
+    removeHead() {
+        this.removeAt(0);
+    }
+
+    removeTail() {
+        this.removeAt(this.size - 3);
+    }
+
+    clearList() {
         this.head = null;
         this.size = 0;
+    }
+
+    printList() {
+        let current = this.head;
+        let nodeData = [];
+        let printString = "LIST <";
+
+        while (current) {
+            nodeData.push(current.data);
+            current = current.next;
+        }
+
+        for (let i of nodeData) {
+            printString = `${printString} — ${i}`;
+        }
+
+        console.log(printString);
     }
 }
 
@@ -127,3 +152,10 @@ console.log(newLinkedList);
 
 newLinkedList.getHead();
 newLinkedList.getTail();
+
+newLinkedList.printList();
+
+newLinkedList.removeHead();
+newLinkedList.removeTail();
+
+newLinkedList.printList();
