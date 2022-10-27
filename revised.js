@@ -67,6 +67,14 @@ class LinkedListg {
 
         this.#incrementSize();
     }
+
+    getAt(index) {
+        let current = this.head;
+        let previous;
+        let getNode = this.#moveToIndex(index, previous, current);
+
+        console.log(getNode[1]);
+    }
 }
 
 let newLinkedList = new LinkedListg();
